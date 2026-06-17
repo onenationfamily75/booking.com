@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelEasy - Book your next stay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "primary-container": "#003580",
+                    "primary": "#002155",
+                    "on-surface-variant": "#434651",
+                    "surface-container-highest": "#e2e2e2",
+                    "tertiary-fixed": "#ffdea4",
+                    "on-surface": "#1a1c1c",
+                    "rating-excellent": "#003580",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-tertiary-fixed": "#261900",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface-container": "#eeeeee",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary-fixed": "#001a41",
+                    "background-alt": "#FFFFFF",
+                    "genius-blue": "#006CE4",
+                    "on-primary-fixed": "#001945",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed-variant": "#004494",
+                    "outline-variant": "#c4c6d3",
+                    "surface-tint": "#375ca8",
+                    "on-background": "#1a1c1c",
+                    "background": "#f9f9f9",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f3f3f3",
+                    "on-primary": "#ffffff",
+                    "secondary": "#0058bc",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-primary-fixed-variant": "#1a438e",
+                    "tertiary-container": "#4c3500",
+                    "tertiary": "#302100",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e8e8e8",
+                    "inverse-primary": "#b0c6ff",
+                    "surface": "#f9f9f9",
+                    "status-error": "#D4111E",
+                    "on-tertiary-fixed-variant": "#5d4200",
+                    "surface-dim": "#dadada",
+                    "on-tertiary": "#ffffff",
+                    "status-success": "#008009",
+                    "secondary-container": "#1070e8",
+                    "on-tertiary-container": "#d19900",
+                    "on-primary-container": "#7fa1f2",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2f3131",
+                    "outline": "#747782",
+                    "tertiary-fixed-dim": "#febb02",
+                    "primary-fixed": "#d9e2ff",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#fefcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "base": "4px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "price-display": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "price-display": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 16px;
+        }
+        .bento-item-large { grid-column: span 2; grid-row: span 2; }
+        .bento-item-medium { grid-column: span 2; grid-row: span 1; }
+        .hero-gradient {
+            background: linear-gradient(180deg, #003580 0%, #002155 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-primary dark:bg-primary docked full-width top-0 z-50">
+<div class="flex justify-between items-center px-4 py-3 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-headline-lg font-headline-lg text-white" href="#">TravelEasy</a>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md border-b-2 border-white text-white pb-1 cursor-pointer active:opacity-80" href="#">Stays</a>
+<a class="font-body-md text-body-md text-white/80 hover:text-white hover:bg-white/10 transition-colors px-2 py-1 rounded cursor-pointer active:opacity-80" href="#">Flights</a>
+<a class="font-body-md text-body-md text-white/80 hover:text-white hover:bg-white/10 transition-colors px-2 py-1 rounded cursor-pointer active:opacity-80" href="#">Car rentals</a>
+<a class="font-body-md text-body-md text-white/80 hover:text-white hover:bg-white/10 transition-colors px-2 py-1 rounded cursor-pointer active:opacity-80" href="#">Attractions</a>
+<a class="font-body-md text-body-md text-white/80 hover:text-white hover:bg-white/10 transition-colors px-2 py-1 rounded cursor-pointer active:opacity-80" href="#">Airport taxis</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">language</span>
+<span class="material-symbols-outlined text-white cursor-pointer hover:bg-white/10 p-2 rounded transition-colors">help_outline</span>
+<button class="bg-white text-primary font-label-bold text-label-bold px-4 py-2 rounded-lg hover:bg-surface-container-low transition-all">List your property</button>
+<button class="text-white font-label-bold text-label-bold px-4 py-2 border border-white rounded-lg hover:bg-white/10 transition-all">Register</button>
+<button class="bg-secondary text-white font-label-bold text-label-bold px-4 py-2 rounded-lg hover:bg-secondary-container transition-all">Sign in</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero & Search Section -->
+<section class="hero-gradient pt-16 pb-32 px-margin-mobile relative overflow-hidden">
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="mb-stack-lg">
+<h1 class="text-white font-headline-lg text-4xl md:text-5xl mb-stack-sm">Find deals for any season</h1>
+<p class="text-white/90 font-body-lg text-body-lg">From cozy bed &amp; breakfasts to luxury hotels</p>
+</div>
+<!-- High-Density Search Widget -->
+<div class="bg-tertiary-fixed-dim p-1 rounded-xl shadow-lg">
+<div class="bg-white rounded-lg grid grid-cols-1 md:grid-cols-4 items-center">
+<div class="flex items-center px-4 py-4 border-b md:border-b-0 md:border-r border-outline-variant hover:bg-surface-container-low transition-colors cursor-text group">
+<span class="material-symbols-outlined text-outline mr-3 group-hover:text-primary transition-colors">bed</span>
+<input class="w-full border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant" placeholder="Where are you going?" type="text"/>
+</div>
+<div class="flex items-center px-4 py-4 border-b md:border-b-0 md:border-r border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline mr-3 group-hover:text-primary transition-colors">calendar_month</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Check-in date — Check-out date</span>
+</div>
+<div class="flex items-center px-4 py-4 border-b md:border-b-0 md:border-r border-outline-variant hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline mr-3 group-hover:text-primary transition-colors">person</span>
+<span class="font-body-md text-body-md text-on-surface">2 adults · 0 children · 1 room</span>
+</div>
+<div class="p-2">
+<button class="w-full bg-genius-blue text-white font-headline-md text-headline-md py-3 rounded-lg hover:bg-secondary transition-all active:scale-[0.98]">
+                                Search
+                            </button>
+</div>
+</div>
+</div>
+<div class="mt-stack-md flex gap-stack-md">
+<label class="flex items-center text-white font-body-sm text-body-sm cursor-pointer hover:bg-white/10 px-2 py-1 rounded transition-colors">
+<input class="rounded border-white/20 bg-transparent mr-2 text-genius-blue focus:ring-genius-blue" type="checkbox"/>
+                        I'm traveling for work
+                    </label>
+</div>
+</div>
+<!-- Atmospheric element -->
+<div class="absolute -bottom-1 -right-1 opacity-20">
+
+</div>
+</section>
+<!-- Trust Markers -->
+<section class="max-w-7xl mx-auto px-margin-mobile -mt-12 mb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter bg-white p-6 rounded-xl shadow-md border border-outline-variant">
+<div class="flex flex-col items-center text-center p-2 group hover:scale-105 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-3 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary-container">account_balance_wallet</span>
+</div>
+<h3 class="font-label-bold text-label-bold mb-1">Book now, pay later</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">FREE cancellation on most rooms</p>
+</div>
+<div class="flex flex-col items-center text-center p-2 group hover:scale-105 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-3 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary-container">star</span>
+</div>
+<h3 class="font-label-bold text-label-bold mb-1">300M+ reviews</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Trusted information from guests</p>
+</div>
+<div class="flex flex-col items-center text-center p-2 group hover:scale-105 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-3 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary-container">apartment</span>
+</div>
+<h3 class="font-label-bold text-label-bold mb-1">2+ million properties</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hotels, apartments, and more</p>
+</div>
+<div class="flex flex-col items-center text-center p-2 group hover:scale-105 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-3 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-primary-container">support_agent</span>
+</div>
+<h3 class="font-label-bold text-label-bold mb-1">24/7 Support</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">We're always here to help</p>
+</div>
+</div>
+</section>
+<!-- Offers Section -->
+<section class="max-w-7xl mx-auto px-margin-mobile mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-sm">Offers</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">Promotions, deals, and special offers for you</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Genius Offer -->
+<div class="flex bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant hover:shadow-md transition-shadow group">
+<div class="w-1/3 h-full min-h-[200px] overflow-hidden">
+<img alt="Luxury travel credit card on a marble surface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up shot of a sleek, premium blue travel credit card resting on a polished white marble surface. Soft sunlight catches the embossed silver details and the TravelEasy Genius logo. In the background, a high-end leather passport holder and a pair of designer sunglasses are artfully blurred. The lighting is bright and sophisticated, creating an atmosphere of exclusive luxury and professional financial security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARxP6ocoHepeHbGreJVzpaDuGsxYLpJHPjI6IR83q6P59qYsihwOjZR2q4bWHC3_A5-zWws3O8qn8lgZVWWJ1XfNcPucCm8g9_SjTO6fm3kQZVv5aA9g-GDOLleU8LmKSGq-L8zUdnvioZeNJ_D8edlRmQH7RWuk4pgLPFUN1vQKAXrNYJ8SpFTDKf73Q-QQlAjLPqvIijmqXHGR3IzVQkrxSbscA7k5oJO78VguC2kP8G01mkt-bC1cbhCG3_iTj2t80Yg1-gM-M"/>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Earn 6% in Travel Credits</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Plus get $150 in Credits after qualifying purchases on your card, an upgrade to Genius Level 3, and more.</p>
+<a class="inline-flex items-center text-genius-blue font-label-bold text-label-bold hover:underline" href="#">
+                            Learn more <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Getaway Deals -->
+<div class="flex bg-white rounded-xl overflow-hidden shadow-sm border border-outline-variant hover:shadow-md transition-shadow group">
+<div class="w-1/3 h-full min-h-[200px] overflow-hidden">
+<img alt="Tropical beach vacation scenery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A panoramic view of a pristine tropical beach with crystal-clear turquoise water gently lapping against white powdery sand. Vibrant green palm trees sway in the distance under a vast, clear blue sky. The lighting is golden and warm, capturing the essence of a perfect summer getaway. The composition is clean and minimalist, conveying a sense of serenity, relaxation, and high-quality vacation possibilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSPYZX2ykV7jfa50NxmsCiT5YRC46TNcBRqgccQitsilyoE9EqbQKrJmrcfDfdkwXh55T6xsjT11AKbrUjaSgjUbKnPJWu7wnCmk4cRb8XWxYJEn9_Jp-7OlcpScCAXXDXmmtnMMPFdjmh3R3JOh1UbAHd0IsI7WjlHcxumI0JI0fy890cCPdIk1dNxZ5dIyO6LpNIL9u2i2A-KTp6qKh3qjGjIZUYefbm9X1TCbmsWxZA_yXufxeFBBgvN9h_ay80ZM5iJcOaR6U"/>
+</div>
+<div class="w-2/3 p-6 flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Escape for less with Getaway Deals</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">No catch. At least 15% off select stays worldwide – just book and go.</p>
+<a class="inline-flex bg-genius-blue text-white px-4 py-2 rounded font-label-bold text-label-bold hover:bg-secondary transition-colors w-fit" href="#">
+                            Save with a Getaway Deal
+                        </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Trending Destinations (Bento Grid) -->
+<section class="max-w-7xl mx-auto px-margin-mobile mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-sm">Trending destinations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Most popular choices for travelers from the United States</p>
+<div class="bento-grid">
+<!-- Las Vegas - Large -->
+<div class="bento-item-large relative rounded-xl overflow-hidden group cursor-pointer">
+<img alt="Las Vegas Strip skyline at dusk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An expansive aerial view of the Las Vegas Strip at dusk, with neon lights beginning to glow against a deep purple and indigo sky. The architectural landmarks are sharply defined, with the bright beams of spotlights cutting through the clear desert air. The atmosphere is electric and high-energy, rendered in a modern cinematic style with deep blacks and vibrant pops of neon color. The lighting transition from twilight to night creates a dramatic, high-contrast visual experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbBy17ETjxf5X-4k0lcmEJ1xZF2ez9RINVhaMeAbvot_XoW_iPY6MJISXAeL_RioPmu1QmK0jQjJB0UbsNJNgReRBX9-saMKea2rA4NI8HX2qMpAGR5qrxF10zqwgPGQvz6ATZHMtI4a_OuAcNe-9L8kWGeYlahHWFlPw00EQPtajLqyCu-ry50VH74ncnaSzzJLk5rgV7KTB4IbBBvp1AarF4SchNUO_Klz377aPMlTSyi7cv23EcKonOk0ZpDyDqs0JdZMBA0mw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h3 class="font-headline-lg text-3xl mb-1 flex items-center">Las Vegas <span class="material-symbols-outlined ml-2">explore</span></h3>
+<p class="font-body-sm opacity-90">Experience the neon heart of Nevada</p>
+</div>
+</div>
+<!-- Orlando - Medium -->
+<div class="bento-item-medium relative rounded-xl overflow-hidden group cursor-pointer">
+<img alt="Orlando theme park castle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A magical theme park castle stands tall under a brilliant, clear blue Florida sky. Fluffy white clouds accent the background, while colorful flowerbeds in the foreground add a sense of joy and whimsy. The lighting is bright and high-key, emphasizing a clean and family-friendly atmosphere. The image is crisp and professional, capturing the vibrant primary colors of a classic vacation destination with a modern, high-density digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClPs6Pr8OceR9wSmhvHYQ4Bonppjup5vNp8RWWV_vD96Lcr2nZG2m0bHKJdA0cUvjHjfCwbtvzI3ag3CgyzVJu5cL1uGK2zxR4GnBQ3VM3TrxacUQFnB-XDN5NycZ1dfTz7LVD1069wijIIk7Fw5jyoCfFlLaDTm7mDpjO-vvEyNFVPcFpGI7wxJ3FcDaeQOEoFz05sGGm7b8VrISX6lmJy8v976Pu20ShmjBLDN1fa_ou9EHxsAnmf48qqq4HLn6WXiF9rLFzLFQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-md text-headline-md">Orlando</h3>
+<p class="font-body-sm opacity-90">Where magic happens daily</p>
+</div>
+</div>
+<!-- New York - Medium -->
+<div class="bento-item-medium relative rounded-xl overflow-hidden group cursor-pointer">
+<img alt="New York City Times Square" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A street-level view of Times Square in New York City, bustling with energy and surrounded by massive digital billboards. Yellow taxis and a diverse crowd of people create a dynamic sense of motion. The lighting is complex, with a mix of natural evening light and the intense artificial glow from screens, rendered with high sharpness and clarity. The color palette is rich and varied, emphasizing the urban vibrancy and global appeal of the Big Apple in a corporate-modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNA0Cq0mQJTgIshGRwMIxHDd0a6nFzTIITFH50F3Skc08hRqGydYKqPWxjIftpLFfh4aFoqPNDc6wH-kw-b4NPphHAgH_-oGxQbDRFkblsVVIbQgMaVSyxWvm6WecOxtk4w4ncDTqqB1veqa-1IRCbRST6iYzV4dkMZlBkv_cry47mww2pws0ftfcoFzDCQx0Kz4jdBnTO903aBwRxb--98tvs7E4eptRqxox7KfiKTmEjKjuywHeExsoLKQm_77tl6OyHqk2mJHI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<h3 class="font-headline-md text-headline-md">New York</h3>
+<p class="font-body-sm opacity-90">The city that never sleeps</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="bg-primary px-margin-mobile py-16 text-center">
+<div class="max-w-2xl mx-auto">
+<h2 class="text-white font-headline-lg text-headline-lg mb-4">Travel more, spend less</h2>
+<p class="text-white/80 font-body-lg mb-8">Save 10% or more at participating properties – just look for the blue Genius label</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-white text-primary font-label-bold text-label-bold px-8 py-3 rounded-lg hover:bg-surface-container-low transition-all">Sign in</button>
+<button class="border border-white text-white font-label-bold text-label-bold px-8 py-3 rounded-lg hover:bg-white/10 transition-all">Register</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full py-8 px-4 mt-auto border-t border-outline-variant">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-stack-lg mb-8">
+<div class="flex flex-col gap-2">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">Support</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Manage your trips</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Customer Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Safety Resource Center</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">Discover</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Genius loyalty</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Seasonal deals</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Travel articles</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">Partners</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Extranet login</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Partner help</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">List your property</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">About</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Sustainability</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Press center</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline text-genius-blue transition-colors" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-2 lg:col-span-2">
+<h4 class="font-label-bold text-label-bold text-primary mb-2">Mobile App</h4>
+<div class="flex gap-2">
+<div class="bg-black text-white px-3 py-1 rounded flex items-center gap-2 cursor-pointer border border-white/20">
+<span class="material-symbols-outlined text-sm">phone_iphone</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] uppercase">Download on</span>
+<span class="text-[12px] font-bold">App Store</span>
+</div>
+</div>
+<div class="bg-black text-white px-3 py-1 rounded flex items-center gap-2 cursor-pointer border border-white/20">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] uppercase">Get it on</span>
+<span class="text-[12px] font-bold">Google Play</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-8 text-center md:flex md:justify-between md:items-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Copyright © 1996–2024 TravelEasy™. All rights reserved.</p>
+<div class="flex gap-4 mt-4 md:mt-0 justify-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline transition-colors" href="#">Terms &amp; Conditions</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:underline transition-colors" href="#">Privacy Notice</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for search bar
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('bg-primary-container/5');
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('bg-primary-container/5');
+            });
+        });
+    </script>
+</body></html>
